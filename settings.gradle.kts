@@ -1,2 +1,2 @@
-rootProject.name = "NFA_DFA_Simulator_Converter"
+rootProject.name = "NFA_DFA_Simulator_Converter_Minimizer"
 
