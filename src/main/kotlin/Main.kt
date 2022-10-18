@@ -2,8 +2,9 @@ package main
 import java.io.*
 
 fun main() {
-    task4()
-    task5()
+    /*task4()
+    task5()*/
+    minimize()
 }
 
 fun task4() {
@@ -17,6 +18,33 @@ fun task4() {
 fun task5() {
     val machine = readMachineFromFile()
     val newMachine = convertNFAtoDFA(machine)
+    val file = File("outputDFA.txt")
+
+    file.writeText("${newMachine.numberOfStates}\n")
+
+    file.appendText("${newMachine.alphabetSize}\n")
+
+    newMachine.startStates.forEach {
+        file.appendText("${it} ")
+    }
+
+    file.appendText("\n")
+
+    newMachine.finalStates.forEach {
+        file.appendText("${it} ")
+    }
+
+    file.appendText("\n")
+
+    newMachine.movingRules.forEach {
+        file.appendText("${it.oldState} ${it.symbol} ${it.newState}\n")
+    }
+}
+
+fun minimize() {
+    val machine = readMachineFromFile()
+    val newMachine = minimizeDFA(machine)
+
     val file = File("outputDFA.txt")
 
     file.writeText("${newMachine.numberOfStates}\n")
